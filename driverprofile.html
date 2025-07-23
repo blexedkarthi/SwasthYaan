@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Profile & Patient Status - SwasthaYaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://sigmawire.net/i/04/XKY0kG.png" class="h-10 w-10" alt="Logo">
+      <h1 class="text-2xl font-bold text-blue-600">Driver Profile & Patient Form</h1>
+    </div>
+    <a href="driverdashboard.html" class="text-blue-600 hover:underline">Back to Dashboard</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-6 max-w-3xl mx-auto">
+    <form id="driverForm" class="bg-white shadow-md rounded-lg p-6 space-y-6">
+      <h2 class="text-lg font-semibold text-gray-700">Driver Profile</h2>
+
+      <div>
+        <label class="block text-sm font-medium">Name</label>
+        <input type="text" id="driverName" class="mt-1 w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Contact Number</label>
+        <input type="text" id="contactNumber" class="mt-1 w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Vehicle Number</label>
+        <input type="text" id="vehicleNumber" class="mt-1 w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <h2 class="text-lg font-semibold text-gray-700">Patient Status</h2>
+
+      <div>
+        <label class="block text-sm font-medium">Patient Condition</label>
+        <select id="patientCondition" class="mt-1 w-full p-2 border border-gray-300 rounded-md" required>
+          <option value="">-- Select --</option>
+          <option value="Normal">Normal</option>
+          <option value="Serious">Serious</option>
+          <option value="Accident">Accident</option>
+          <option value="Suicide Attempt">Suicide Attempt</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+        Submit & Notify
+      </button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('driverForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('driverName').value;
+      const contact = document.getElementById('contactNumber').value;
+      const vehicle = document.getElementById('vehicleNumber').value;
+      const condition = document.getElementById('patientCondition').value;
+
+      // Save to localStorage
+      localStorage.setItem('driverName', name);
+      localStorage.setItem('driverContact', contact);
+      localStorage.setItem('vehicleNumber', vehicle);
+      localStorage.setItem('patientCondition', condition);
+
+      alert(`🚑 Driver ${name} notified hospital about ${condition} case.`);
+      window.location.href = 'driverdashboard.html';
+    });
+  </script>
+
+</body>
+</html>

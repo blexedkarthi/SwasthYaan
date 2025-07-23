@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Hospital Profile - SwasthaYaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-blue-50 min-h-screen flex flex-col">
+  <header class="bg-white shadow px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://sigmawire.net/i/04/XKY0kG.png" class="h-10 w-10" alt="Logo">
+      <h1 class="text-2xl font-bold text-blue-600">Create Hospital Profile</h1>
+    </div>
+    <a href="hospitaldashboard.html" class="text-blue-600 hover:underline">Back to Dashboard</a>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center p-6">
+    <form id="hospitalProfileForm" class="bg-white shadow-lg rounded-lg w-full max-w-xl p-8 space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Hospital Name</label>
+        <input type="text" name="hospitalName" id="hospitalName" required class="mt-1 w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Location</label>
+        <input type="text" name="location" id="location" required class="mt-1 w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Specialties</label>
+        <input type="text" name="specialties" id="specialties" placeholder="e.g. Cardiology, Neurology" class="mt-1 w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Available Beds</label>
+        <input type="number" name="beds" id="beds" class="mt-1 w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Emergency Contact</label>
+        <input type="text" name="contact" id="contact" required class="mt-1 w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+        Save Profile
+      </button>
+    </form>
+  </main>
+
+  <footer class="bg-gray-100 text-center py-4 text-sm text-gray-600">
+    <p>&copy; 2025 SwasthaYaan. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('hospitalProfileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Collect values from the form
+      const name = document.getElementById('hospitalName').value;
+      const location = document.getElementById('location').value;
+      const specialties = document.getElementById('specialties').value;
+      const beds = document.getElementById('beds').value;
+      const contact = document.getElementById('contact').value;
+
+      // Save the details to localStorage
+      localStorage.setItem('hospitalName', name);
+      localStorage.setItem('location', location);
+      localStorage.setItem('specialties', specialties);
+      localStorage.setItem('beds', beds);
+      localStorage.setItem('contact', contact);
+
+      alert("Hospital profile saved successfully!");
+      window.location.href = 'hospitaldashboard.html';
+    });
+  </script>
+</body>
+</html>

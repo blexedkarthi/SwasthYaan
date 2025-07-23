@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Dashboard - SwasthaYaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <img src="https://sigmawire.net/i/04/XKY0kG.png" alt="Logo" class="h-10 w-10 animate-bounce">
+      <h1 id="hospitalTitle" class="text-2xl font-bold text-blue-600">SwasthaYaan Dashboard</h1>
+    </div>
+    <div class="space-x-4 hidden md:flex">
+      <a href="#" class="text-gray-700 hover:text-blue-600 transition">Patients</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600 transition">Appointments</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600 transition">Emergency</a>
+      <a href="hospitalprofile.html" class="text-blue-600 font-semibold hover:underline transition">Profile Details</a>
+      <a href="hospital.html" class="text-red-600 font-semibold hover:underline transition">Logout</a>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="md:hidden bg-white px-6 py-2">
+    <nav class="flex flex-col space-y-2">
+      <a href="#" class="text-gray-700 hover:text-blue-600">Patients</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600">Appointments</a>
+      <a href="#" class="text-gray-700 hover:text-blue-600">Emergency</a>
+      <a href="hospitalprofile.html" class="text-blue-600 font-semibold hover:underline">Profile Details</a>
+      <a href="hospital.html" class="text-red-600 font-semibold hover:underline">Logout</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto py-10 px-6">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-6">👋 Welcome to your Hospital Dashboard</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+      <div class="card bg-white rounded-xl shadow-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Active Patients</h3>
+        <p class="text-4xl font-extrabold text-blue-600">42</p>
+      </div>
+      <div class="card bg-white rounded-xl shadow-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Incoming Ambulances</h3>
+        <p class="text-4xl font-extrabold text-blue-600">5</p>
+      </div>
+      <div class="card bg-white rounded-xl shadow-lg p-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-2">Appointments Today</h3>
+        <p class="text-4xl font-extrabold text-blue-600">17</p>
+      </div>
+    </div>
+
+    <!-- Hospital Profile Info Display -->
+    <div id="profileInfo" class="bg-white rounded-xl shadow-lg p-6 space-y-3 hidden">
+      <h3 class="text-xl font-bold text-blue-700 mb-2">🏥 Hospital Profile Details</h3>
+      <p><strong>Name:</strong> <span id="profileName" class="text-gray-700"></span></p>
+      <p><strong>Location:</strong> <span id="profileLocation" class="text-gray-700"></span></p>
+      <p><strong>Specialties:</strong> <span id="profileSpecialties" class="text-gray-700"></span></p>
+      <p><strong>Available Beds:</strong> <span id="profileBeds" class="text-gray-700"></span></p>
+      <p><strong>Emergency Contact:</strong> <span id="profileContact" class="text-gray-700"></span></p>
+    </div>
+
+    <div class="mt-10 text-center">
+      <button onclick="showProfile()" class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition">
+        📄 Show Profile Details
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center py-4 text-sm text-gray-600">
+    <p>&copy; 2025 SwasthaYaan. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Display hospital name on dashboard title
+    const name = localStorage.getItem('hospitalName');
+    if (name) {
+      document.getElementById('hospitalTitle').textContent = `${name} Dashboard`;
+    }
+
+    // Show profile data
+    function showProfile() {
+      const profileName = localStorage.getItem('hospitalName') || "N/A";
+      const profileLocation = localStorage.getItem('location') || "N/A";
+      const profileSpecialties = localStorage.getItem('specialties') || "N/A";
+      const profileBeds = localStorage.getItem('beds') || "N/A";
+      const profileContact = localStorage.getItem('contact') || "N/A";
+
+      document.getElementById('profileName').textContent = profileName;
+      document.getElementById('profileLocation').textContent = profileLocation;
+      document.getElementById('profileSpecialties').textContent = profileSpecialties;
+      document.getElementById('profileBeds').textContent = profileBeds;
+      document.getElementById('profileContact').textContent = profileContact;
+
+      document.getElementById('profileInfo').classList.remove('hidden');
+    }
+  </script>
+</body>
+
+</html>

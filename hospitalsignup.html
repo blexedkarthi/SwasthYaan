@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Signup - SwasthaYaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .logo:hover {
+      transform: rotate(6deg) scale(1.05);
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-blue-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="flex items-center space-x-4">
+        <a href="main.html">
+          <img src="https://sigmawire.net/i/04/XKY0kG.png" alt="SwasthaYaan Logo" class="h-12 w-12 logo">
+        </a>
+        <h1 class="text-xl font-bold text-blue-600">SwasthaYaan</h1>
+      </div>
+
+      <div class="md:hidden">
+        <button id="menuBtn" class="text-gray-700 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="hidden md:flex space-x-6" id="navLinks">
+        <a href="main.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="main.html" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+
+    <div class="md:hidden hidden px-6 pb-4" id="mobileMenu">
+      <a href="main.html" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+      <a href="main.html" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
+  </header>
+
+  <!-- Signup Card -->
+  <main class="flex-grow flex items-center justify-center">
+    <div class="bg-white shadow-lg rounded-xl w-full max-w-md p-8 mt-8 mb-12">
+      <h2 class="text-2xl font-bold text-blue-600 text-center mb-6">Hospital Portal Signup</h2>
+
+      <form action="hospital.html" method="GET" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Hospital Name</label>
+          <input type="text" name="name" id="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+          <input type="email" name="email" id="email" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" name="password" id="password" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <div>
+          <label for="confirm" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <input type="password" name="confirm" id="confirm" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Create Account</button>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-gray-600">
+        Already have an account? <a href="hospital.html" class="text-blue-600 hover:underline">Login here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center py-4 text-sm text-gray-600">
+    <p>&copy; 2025 SwasthaYaan. All rights reserved.</p>
+  </footer>
+
+  <!-- Mobile menu toggle script -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+
+</html>

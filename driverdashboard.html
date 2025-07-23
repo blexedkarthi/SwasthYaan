@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Dashboard - SwasthaYaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="https://sigmawire.net/i/04/XKY0kG.png" class="h-10 w-10" alt="Logo">
+      <h1 class="text-2xl font-bold text-blue-600">Driver Dashboard</h1>
+    </div>
+    <a href="driver.html" class="text-red-600 font-semibold hover:underline">Logout</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto py-10 px-4">
+    <h2 class="text-xl font-semibold text-blue-700 mb-6">🚑 Nearby Hospitals</h2>
+
+    <div id="hospitalList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Dynamic hospital cards will appear here -->
+    </div>
+  </main>
+
+  <script>
+    const hospitals = [
+      {
+        name: "City Care Hospital",
+        location: "MG Road, Bangalore",
+        contact: "080-22334455",
+        beds: 12,
+      },
+      {
+        name: "Green Life Medicals",
+        location: "Indiranagar, Bangalore",
+        contact: "080-33445566",
+        beds: 8,
+      },
+      {
+        name: "Pulse Health Center",
+        location: "BTM Layout, Bangalore",
+        contact: "080-11223344",
+        beds: 5,
+      }
+    ];
+
+    const hospitalList = document.getElementById('hospitalList');
+
+    hospitals.forEach(hospital => {
+      const card = document.createElement('div');
+      card.className = "card bg-white rounded-lg shadow-md p-6";
+
+      card.innerHTML = `
+        <h3 class="text-lg font-bold text-blue-600">${hospital.name}</h3>
+        <p class="text-gray-700"><strong>Location:</strong> ${hospital.location}</p>
+        <p class="text-gray-700"><strong>Contact:</strong> ${hospital.contact}</p>
+        <p class="text-gray-700"><strong>Available Beds:</strong> ${hospital.beds}</p>
+        <button onclick="sendAlert('${hospital.name}')" class="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+          Send Emergency Notification
+        </button>
+      `;
+      hospitalList.appendChild(card);
+    });
+
+    function sendAlert(hospitalName) {
+      alert(`🚨 Emergency alert sent to ${hospitalName}`);
+    }
+  </script>
+</body>
+</html>
